@@ -1,0 +1,20 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:editing_author) %> &ldquo;<%= @author.name %>&rdquo;
+<% end %>
+
+<% content_for :page_actions do %>
+  <li><%= button_link_to Spree.t(:back_to_authors_list), session[:return_to] || admin_authors_url, :icon => 'icon-arrow-left' %></li>
+  <li id="new_product_link">
+    <%= button_link_to Spree.t(:new_product), new_object_url, { :remote => true, :icon => 'icon-plus', id: 'admin_new_product' } %>
+  </li>
+<% end %>
+
+<%= render :partial => 'spree/admin/shared/product_sub_menu' %>
+<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @author } %>
+
+<%= form_for [:admin, @author], :method => :put, :html => { :multipart => true } do |f| %>
+  <fieldset class="no-border-top">
+    <%= render :partial => 'form', :locals => { :f => f } %>
+    <%= render :partial => 'spree/admin/shared/edit_resource_links' %>
+  </fieldset>
+<% end %>

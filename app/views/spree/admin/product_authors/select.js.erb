@@ -1,0 +1,2 @@
+$("#selected-authors").html("<%= escape_javascript(render(:partial => 'author_table', :locals => {:authors => @authors})) %>");
+$("#<%= dom_id @author, :sel %>").hide();

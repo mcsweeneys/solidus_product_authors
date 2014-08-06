@@ -1,0 +1,43 @@
+<%= render :partial => 'spree/admin/shared/product_sub_menu' %>
+
+<%= render :partial => 'spree/admin/shared/product_tabs', :locals => {:current => 'Authors'} %>
+<div id="selected-authors" data-hook>
+  <%= render :partial => 'author_table', :locals => {:authors => @authors} %>
+</div>
+
+
+<%= form_tag '#' do %>
+  <%= label_tag nil, Spree.t(:search) %>:
+  <input id="searchtext" size="25">
+<% end %>
+
+<%= javascript_tag do %>
+  function search_for_authors(){
+    $.ajax({
+     data: {q: $("#searchtext").val() },
+     dataType: 'html',
+     success: function(request){
+       jQuery('#search_hits').html(request);
+     },
+     type: 'POST',
+     url: '<%= available_admin_product_authors_url(@product, :format => 'js') %>'
+    });
+  }
+
+  $("#searchtext").keypress(function (e) {
+    if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+      search_for_authors();
+
+      return false;
+    } else {
+       return true;
+    }
+  });
+
+  $("#searchtext").delayedObserver(function() {
+    search_for_authors();
+  }, 0.75);
+<% end %>
+<br />
+<div id="search_hits" data-hook></div>
+

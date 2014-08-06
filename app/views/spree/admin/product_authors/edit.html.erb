@@ -1,0 +1,11 @@
+<% render 'spree/admin/shared/product_sub_menu' %>
+
+<h1><%= Spree.t(:author_edit) %></h1>
+
+<%= form_for [:admin, @author], :html => { :method => :put, :multipart => true} do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+
+  <p class="form-buttons" data-hook="buttons">
+    <%= button Spree.t(:update) %> <%= Spree.t(:or) %> <%= link_to Spree.t(:cancel), admin_authors_url %>
+  </p>
+<% end %>

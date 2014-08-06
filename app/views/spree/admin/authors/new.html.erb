@@ -1,0 +1,12 @@
+<% render 'spree/admin/shared/product_sub_menu' %>
+
+<h1><%= Spree.t(:new_author) %></h1>
+
+<%= form_for [:admin, @author] do |f| %>
+
+  <%= render :partial => 'form', :locals => { :f => f } %>
+
+  <p class="form-buttons" data-hook="buttons">
+    <%= button Spree.t(:create) %>
+  </p>
+<% end %>

@@ -1,0 +1,24 @@
+<h4><%= Spree.t(:available_authors) %></h4>
+<table class="index">
+  <thead>
+    <tr>
+      <th><%= Spree.t(:name) %></th>
+      <th><%= Spree.t(:action) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @authors.each do |author| %>
+      <tr id="<%= dom_id(author, :sel) %>">
+        <td><%= author.name %></td>
+        <td class="actions">
+          <%= link_to icon(:add) + ' ' + Spree.t(:select),
+                            select_admin_product_author_path(@product, author),
+                           :remote => true, class: 'iconlink' %>
+        </td>
+      </tr>
+    <% end %>
+    <% if @authors.empty? %>
+     <tr><td colspan="3"><%= Spree.t(:no_match_found) %>.</td></tr>
+    <% end %>
+  </tbody>
+</table>

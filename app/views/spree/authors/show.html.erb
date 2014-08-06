@@ -1,0 +1,25 @@
+<% self.title = @author.name unless ( !@author || !@author.name ) %>
+
+<% content_for :sidebar do %>
+  <div data-hook="product_sidebar_navigation">
+  	<%= render :partial => 'spree/shared/taxonomies' %>
+  </div>
+<% end %>
+
+<% if @author %>
+	<h1 class="mcSwysTitle"><%= @author.name.mcswys_upcase.html_safe %></h1>
+
+	<% unless @author.bio.blank? %>
+		<div id="bio" class="wideTextArea">
+            <%= RubyPants.new(author_bio(@author)).to_html.html_safe %>
+		</div>
+		<div class="fullWidthThinDivider">
+		</div>
+	<% end %>
+<% end %>
+
+<% if @products %>
+	<div id="products">
+		<%= render :partial => 'spree/shared/products', :locals => { :products => @products, taxon: @taxon } %>
+	</div>
+<% end %>

@@ -1,0 +1,21 @@
+<table class="index">
+  <thead>
+    <tr data-hook="authors_header">
+      <th><%= Spree.t(:name) %></th>
+      <th data-hook="admin_product_authors_index_header_actions" class="actions"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% authors.each do |author| %>
+      <tr id="<%= dom_id(author)%>" data-hook="authors_row">
+        <td><%= author.name %></td>
+        <td class="actions">
+            <%= link_to_delete author, url: remove_admin_product_author_url(@product, author), no_text: true %>
+        </td>
+      </tr>
+    <% end %>
+    <% if authors.empty? %>
+     <tr data-hook="authors_none"><td>(<%= Spree.t(:none) %>)</td><td class="actions"></td></tr>
+    <% end %>
+  </tbody>
+</table>
