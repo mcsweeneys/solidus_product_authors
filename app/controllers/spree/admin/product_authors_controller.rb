@@ -91,7 +91,7 @@ class Spree::Admin::ProductAuthorsController < Spree::Admin::BaseController
   private
 
   def load_product
-    Spree::Product.find_by_permalink! params[:product_id]
+    Spree::Product.with_deleted.friendly.find(params[:product_id])
   end
 
 end
