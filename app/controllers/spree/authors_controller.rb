@@ -9,7 +9,7 @@ class Spree::AuthorsController < Spree::StoreController
     return unless @author
 
     @searcher = Spree::Config.searcher_class.new(params.merge(author: @author.id))
-    @products = @author.products.reject {|p| p.taxons.empty?}
+    @products = @author.products.includes(:taxons).reject {|p| p.taxons.empty?}
 
     respond_with(@author)
   end
