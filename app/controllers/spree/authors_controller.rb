@@ -8,9 +8,8 @@ class Spree::AuthorsController < Spree::StoreController
     @author = Spree::Author.find_by_permalink!(params[:id])
     return unless @author
 
-    @searcher = Spree::Config.searcher_class.new(params.merge(:author => @author.id))
-    @products = @author.products
-    @products.delete_if {|p| p.taxons.empty?}
+    @searcher = Spree::Config.searcher_class.new(params.merge(author: @author.id))
+    @products = @author.products.reject {|p| p.taxons.empty?}
 
     respond_with(@author)
   end
