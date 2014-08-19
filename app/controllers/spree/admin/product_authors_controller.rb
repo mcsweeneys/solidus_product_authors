@@ -54,8 +54,7 @@ class Spree::Admin::ProductAuthorsController < Spree::Admin::BaseController
 
   def available
     @product = load_product
-    @authors = params[:q].blank? ? [] : Spree::Author.where('lower(name) LIKE ?', "%#{params[:q].mb_chars.downcase}%")
-    @authors.delete_if { |author| @product.authors.include?(author) }
+    @authors = params[:q].blank? ? [] : Spree::Author.where('lower(name) LIKE ?', "%#{params[:q].mb_chars.downcase}%").reject { |author| @product.authors.include?(author) }
 
     respond_with(:admin, @authors)
   end
