@@ -1,3 +1,3 @@
 <%= content_tag :li, class: ('active' if current == 'Authors') do %>
-	<%= link_to_with_icon 'pencil', Spree.t(:authors), admin_product_authors_url(@product) %>
+	<%= link_to Spree.t(:authors), admin_product_authors_url(@product) %>
 <% end %>
