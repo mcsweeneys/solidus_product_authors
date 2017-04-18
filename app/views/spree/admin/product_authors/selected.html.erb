@@ -1,4 +1,7 @@
 <%= render partial: 'spree/admin/shared/product_tabs', locals: { current: 'Authors' } %>
+
+<% admin_breadcrumb(Spree.t(:authors)) %>
+
 <div id="selected-authors" data-hook>
   <%= render partial: 'author_table', locals: { authors: @authors } %>
 </div>
