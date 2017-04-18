@@ -1,6 +1,6 @@
-<%= render :partial => 'spree/admin/shared/product_tabs', :locals => {:current => 'Authors'} %>
+<%= render partial: 'spree/admin/shared/product_tabs', locals: { current: 'Authors' } %>
 <div id="selected-authors" data-hook>
-  <%= render :partial => 'author_table', :locals => {:authors => @authors} %>
+  <%= render partial: 'author_table', locals: { authors: @authors } %>
 </div>
 
 <%= form_tag '#' do %>
@@ -17,7 +17,7 @@
        jQuery('#search_hits').html(request);
      },
      type: 'POST',
-     url: '<%= available_admin_product_authors_url(@product, :format => 'js') %>'
+     url: '<%= available_admin_product_authors_url(@product, format: 'js') %>'
     });
   }
 
