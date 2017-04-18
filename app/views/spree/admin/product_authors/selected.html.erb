@@ -3,12 +3,6 @@
   <%= render :partial => 'author_table', :locals => {:authors => @authors} %>
 </div>
 
-<% content_for :page_actions do %>
-  <% if can?(:admin, Spree::Product) %>
-    <li><%= button_link_to Spree.t(:back_to_product), edit_admin_product_path(@product), icon: 'arrow-left' %></li>
-  <% end %>
-<% end %>
-
 <%= form_tag '#' do %>
   <%= label_tag nil, Spree.t(:search) %>:
   <input id="searchtext" size="25">
