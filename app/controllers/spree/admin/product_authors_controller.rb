@@ -1,16 +1,15 @@
 class Spree::Admin::ProductAuthorsController < Spree::Admin::BaseController
-
   respond_to :html, :json, :js
-  
+
   def index
-    redirect_to action: "selected"
+    redirect_to action: 'selected'
   end
 
   def create
     @author = Spree::Author.build(params[:author])
     if @author.save
       respond_with(@author) do |format|
-        format.json {render json: @author.to_json }
+        format.json { render json: @author.to_json }
       end
     else
       flash[:error] = I18n.t('errors.messages.could_not_create_author')
@@ -23,7 +22,7 @@ class Spree::Admin::ProductAuthorsController < Spree::Admin::BaseController
   def edit
     @author = Spree::Author.find_by_permalink(params[:id])
 
-    respond_with(:admin, @author) 
+    respond_with(:admin, @author)
   end
 
   def update
@@ -32,10 +31,10 @@ class Spree::Admin::ProductAuthorsController < Spree::Admin::BaseController
     if @author.update_attributes(params[:author])
       flash[:notice] = flash_message_for(@author, :successfully_updated)
     end
-    
+
     respond_with(@author) do |format|
-      format.html {redirect_to edit_admin_author_url(@author) }
-      format.json {render json: @author.to_json }
+      format.html { redirect_to edit_admin_author_url(@author) }
+      format.json { render json: @author.to_json }
     end
   end
 
@@ -81,7 +80,7 @@ class Spree::Admin::ProductAuthorsController < Spree::Admin::BaseController
 
   def batch_select
     @product = load_product
-    @authors = params[:author_ids].map{|id| Spree::Author.find_by_permalink(id)}.compact
+    @authors = params[:author_ids].map { |id| Spree::Author.find_by_permalink(id) }.compact
     @product.authors = @authors
     @product.save
     redirect_to selected_admin_product_authors_url(@product)
@@ -92,5 +91,4 @@ class Spree::Admin::ProductAuthorsController < Spree::Admin::BaseController
   def load_product
     Spree::Product.with_deleted.friendly.find(params[:product_id])
   end
-
 end

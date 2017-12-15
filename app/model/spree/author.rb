@@ -1,9 +1,8 @@
 class Spree::Author < ActiveRecord::Base
-  
-  has_and_belongs_to_many :products, -> { where "`spree_products`.deleted_at IS NULL" }, class_name: "Spree::Product"
+  has_and_belongs_to_many :products, -> { where '`spree_products`.deleted_at IS NULL' }, class_name: 'Spree::Product'
 
-  validates :name, :presence => true, :uniqueness => true
-  validates :permalink, :presence => true, :uniqueness => true
+  validates :name, presence: true, uniqueness: true
+  validates :permalink, presence: true, uniqueness: true
 
   make_permalink
 

@@ -1,4 +1,4 @@
-# encoding: UTF-8
+
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_product_authors'
@@ -11,8 +11,8 @@ Gem::Specification.new do |s|
   s.email     = 'custservice@mcsweeneys.net'
   s.homepage  = 'http://www.mcsweeneys.net'
 
-  #s.files       = `git ls-files`.split("\n")
-  #s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
+  # s.files       = `git ls-files`.split("\n")
+  # s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.require_path = 'lib'
   s.requirements << 'none'
 

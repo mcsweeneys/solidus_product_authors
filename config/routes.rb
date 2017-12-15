@@ -1,7 +1,7 @@
 Spree::Core::Engine.routes.draw do
   namespace :admin do
     resources :products do
-      resources :authors, :controller => "product_authors" do
+      resources :authors, controller: 'product_authors' do
         member do
           get :select
           delete :remove
