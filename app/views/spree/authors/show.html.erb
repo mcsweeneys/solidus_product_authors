@@ -7,7 +7,7 @@
 <% end %>
 
 <% if @author %>
-	<h1 class="mcSwysTitle"><%= @author.name.mcswys_upcase.html_safe %></h1>
+	<h1 class="mcSwysTitle"><%= mcswys_upcase(@author.name) %></h1>
 
 	<% unless @author.bio.blank? %>
 		<div id="bio" class="wideTextArea">
