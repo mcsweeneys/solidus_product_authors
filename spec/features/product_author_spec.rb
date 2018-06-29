@@ -4,8 +4,8 @@ describe 'ProductAuthors', js: true do
   let!(:product1) { create(:product, name: 'RoR Mug', price: 10) }
   let!(:product2) { create(:product, name: 'RoR Mug', price: 10) }
   let!(:product3) { create(:product, name: 'RoR Mug', price: 10) }
-  let!(:author1) { create(:author, name: 'John Doe') }
-  let!(:author2) { create(:author, name: 'Jane Smith') }
+  let!(:author1) { create(:author, name: 'John Doe', permalink: 'johndoe') }
+  let!(:author2) { create(:author, name: 'Jane Smith', permalink: 'janesmith') }
 
   let!(:store) { create(:store) }
 
