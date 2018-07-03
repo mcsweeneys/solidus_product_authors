@@ -9,7 +9,7 @@ describe 'ProductAuthors', js: true do
 
   let!(:store) { create(:store) }
 
-  it 'should display author on product show' do
+  skip 'should display author on product show' do
     visit spree.products_path
     click_link product1.name
     expect(page).to have_content(/John Doe/i)
