@@ -1,25 +1,46 @@
 require 'spec_helper'
 
 describe 'ProductAuthors', js: true do
-  let!(:product1) { create(:product, name: 'RoR Mug', price: 10) }
-  let!(:product2) { create(:product, name: 'Tote Bag', price: 10) }
-  let!(:product3) { create(:product, name: 'T-Shirt', price: 10) }
-  let!(:author1) { create(:author, name: 'John Doe', permalink: 'johndoe') }
-  let!(:author2) { create(:author, name: 'Jane Smith', permalink: 'janesmith') }
-
   let!(:store) { create(:store) }
+  
+  before :all do
+    @product1 = create(:product, name: 'RoR Mug', price: 10)
+    @product2 = create(:product, name: 'Tote Bag', price: 10)
+    @product3 = create(:product, name: 'T-Shirt', price: 10)
+    @author1 = create(:author, name: 'John Doe', permalink: 'johndoe')
+    @author2 = create(:author, name: 'Jane Smith', permalink: 'janesmith')
+
+    @product1.authors << @author1
+    @product2.authors << @author2
+    @product3.authors << @author1
+    @product3.authors << @author2
+  end
+
+  it 'should display author on author show' do
+    visit spree.author_path(@author1)
+    expect(page).to have_content(/John Doe/i)
+    expect(page).to have_content(/RoR Mug/i)
+    expect(page).not_to have_content(/Tote Bag/i)
+    expect(page).to have_content(/T-Shirt/i)
+
+    visit spree.author_path(@author2)
+    expect(page).to have_content(/Jane Smith/i)
+    expect(page).not_to have_content(/RoR Mug/i)
+    expect(page).to have_content(/Tote Bag/i)
+    expect(page).to have_content(/T-Shirt/i)
+  end
 
   skip 'should display author on product show' do
     visit spree.products_path
-    click_link product1.name
+    click_link @product1.name
     expect(page).to have_content(/John Doe/i)
 
     visit spree.products_path
-    click_link product2.name
+    click_link @product2.name
     expect(page).to have_content(/John Doe/i)
 
     visit spree.products_path
-    click_link product3.name
+    click_link @product3.name
     expect(page).to have_content(/John Doe and Jane Smith/i)
   end
 end
