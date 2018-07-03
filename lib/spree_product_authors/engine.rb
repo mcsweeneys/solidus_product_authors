@@ -7,8 +7,8 @@ module SpreeProductAuthors
     config.autoload_paths += %W[#{config.root}/lib]
 
     # use rspec for tests
-    config.generators do |g|
-      g.test_framework :rspec
+    config.generators do |generator|
+      generator.test_framework :rspec
     end
 
     def self.activate
