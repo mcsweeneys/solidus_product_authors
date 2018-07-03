@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'ProductAuthors', js: true do
   let!(:store) { create(:store) }
   
-  before :all do
+  before :each do
     @product1 = create(:product, name: 'RoR Mug', price: 10)
     @product2 = create(:product, name: 'Tote Bag', price: 10)
     @product3 = create(:product, name: 'T-Shirt', price: 10)
@@ -28,6 +28,14 @@ describe 'ProductAuthors', js: true do
     expect(page).not_to have_content(/RoR Mug/i)
     expect(page).to have_content(/Tote Bag/i)
     expect(page).to have_content(/T-Shirt/i)
+  end
+
+  it 'should not display deleted products on author show' do
+    @product4 = create(:product, name: 'Deleted Pants', price: 10, deleted_at: 1.day.ago)
+    @product4.authors << @author1
+
+    visit spree.author_path(@author1)
+    expect(page).not_to have_content(/Deleted Pants/i)
   end
 
   skip 'should display author on product show' do
