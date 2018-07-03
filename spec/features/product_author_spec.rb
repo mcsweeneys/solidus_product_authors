@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe 'ProductAuthors', js: true do
   let!(:product1) { create(:product, name: 'RoR Mug', price: 10) }
-  let!(:product2) { create(:product, name: 'RoR Mug', price: 10) }
-  let!(:product3) { create(:product, name: 'RoR Mug', price: 10) }
+  let!(:product2) { create(:product, name: 'Tote Bag', price: 10) }
+  let!(:product3) { create(:product, name: 'T-Shirt', price: 10) }
   let!(:author1) { create(:author, name: 'John Doe', permalink: 'johndoe') }
   let!(:author2) { create(:author, name: 'Jane Smith', permalink: 'janesmith') }
 
