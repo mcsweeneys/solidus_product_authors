@@ -1,11 +1,5 @@
 <% self.title = @author.name if @author.name.present? %>
 
-<% content_for :sidebar do %>
-  <div data-hook="product_sidebar_navigation">
-    <%= render partial: 'spree/shared/taxonomies' if @taxonomies %>
-  </div>
-<% end %>
-
 <h1><%= @author.name %></h1>
 
 <% if @author.bio.present? %>
