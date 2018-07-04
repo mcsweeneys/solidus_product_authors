@@ -1,14 +1,13 @@
-<% self.title = @author.name if @author.name.present? %>
+<% self.title = @author.name %>
 
 <h1><%= @author.name %></h1>
 
-<% if @author.bio.present? %>
-  <div id="bio" class="wideTextArea">
-    <%= RubyPants.new(author_bio(@author)).to_html.html_safe %>
-  </div>
-  <div class="fullWidthThinDivider">
-  </div>
-<% end %>
+<div id="bio" class="wideTextArea">
+  <%= @author.bio %>
+</div>
+
+<div class="fullWidthThinDivider">
+</div>
 
 <% if @products %>
   <div id="products">
