@@ -4,7 +4,7 @@ module SpreeProductAuthors
     isolate_namespace Spree
     engine_name 'spree_product_authors'
 
-    config.autoload_paths += %W[#{config.root}/lib]
+    config.autoload_paths += %W(#{config.root}/lib)
 
     # use rspec for tests
     config.generators do |generator|
@@ -17,6 +17,6 @@ module SpreeProductAuthors
       end
     end
 
-    config.to_prepare &method(:activate).to_proc
+    config.to_prepare(&method(:activate).to_proc)
   end
 end
