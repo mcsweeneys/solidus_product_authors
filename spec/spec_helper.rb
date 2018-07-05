@@ -8,7 +8,6 @@ rescue LoadError
 end
 
 require 'rspec/rails'
-require 'database_cleaner'
 require 'factory_bot'
 FactoryBot.find_definitions
 require 'ffaker'
@@ -21,15 +20,6 @@ Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
-
-  config.before :each do
-    DatabaseCleaner.strategy = RSpec.current_example.metadata[:js] ? :truncation : :transaction
-    DatabaseCleaner.start
-  end
-
-  config.after :each do
-    DatabaseCleaner.clean
-  end
 
   config.color = true
   config.use_transactional_fixtures = false
