@@ -38,7 +38,7 @@ describe 'ProductAuthors', js: true do
     expect(page).not_to have_content(/Deleted Pants/i)
   end
 
-  skip 'should display author on product show' do
+  it 'should display author on product show' do
     visit spree.products_path
     click_link @product1.name
     expect(page).to have_content(/John Doe/i)
