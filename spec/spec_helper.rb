@@ -8,8 +8,6 @@ rescue LoadError
 end
 
 require 'rspec/rails'
-require 'factory_bot'
-FactoryBot.find_definitions
 require 'ffaker'
 require 'pry'
 
