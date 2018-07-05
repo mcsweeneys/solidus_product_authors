@@ -49,6 +49,6 @@ describe 'ProductAuthors', js: true do
 
     visit spree.products_path
     click_link @product3.name
-    expect(page).to have_content(/John Doe and Jane Smith/i)
+    expect(page).to have_content(/John Doe, Jane Smith/i)
   end
 end
