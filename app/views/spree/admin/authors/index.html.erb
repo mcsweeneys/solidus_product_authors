@@ -14,7 +14,7 @@
   <%= Spree.t(:search) %>
 <% end %>
 
-<%= paginate @collection %>
+<%= paginate @collection, theme: "solidus_admin" %>
 
 <% if @collection.any? %>
     <table class="index" id="listing_authors">
@@ -48,4 +48,4 @@
   </div>
 <% end %>
 
-<%= paginate @collection %>
+<%= paginate @collection, theme: "solidus_admin" %>
