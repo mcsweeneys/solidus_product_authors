@@ -1,6 +1,7 @@
 <% admin_layout "full-width" %>
 
-<% admin_breadcrumb(plural_resource_name(Spree::Product)) %>
+<% admin_breadcrumb(link_to plural_resource_name(Spree::Product), spree.admin_products_path) %>
+<% admin_breadcrumb(plural_resource_name(Spree::Author)) %>
 
 <% content_for :page_actions do %>
   <li>
@@ -10,14 +11,6 @@
 
 <% content_for :table_filter_title do %>
   <%= t('spree.search') %>
-<% end %>
-
-<% content_for :page_title do %>
-  <%= Spree.t(:listing_authors) %>
-<% end %>
-
-<% content_for :table_filter_title do %>
-  <%= Spree.t(:search) %>
 <% end %>
 
 <%= paginate @collection, theme: "solidus_admin" %>

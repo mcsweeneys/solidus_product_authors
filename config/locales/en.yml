@@ -7,3 +7,8 @@ en:
       tab:
         authors: Authors
     authors: Authors
+  activerecord:
+    models:
+      spree/author:
+        one: Author
+        other: Authors

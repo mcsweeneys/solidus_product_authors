@@ -1,1 +1,3 @@
-<%= tab :authors %>
+<% if can? :admin, Spree::Author %>
+  <%= tab :authors, label: :authors %>
+<% end %>
