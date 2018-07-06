@@ -11,11 +11,7 @@ module Spree
       end
 
       def find_resource
-        result = Spree::Author.find_by_permalink(params[:id])
-        unless result.present?
-          result = Spree::Author.all.select { |author| author.to_param == params[:id] }.first
-         end
-        result
+        result = Spree::Author.find_by_permalink!(params[:id])
       end
 
       protected
