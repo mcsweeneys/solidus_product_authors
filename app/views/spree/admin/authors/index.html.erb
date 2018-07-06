@@ -4,11 +4,11 @@
 
 <% content_for :page_actions do %>
   <li id="new_product_link">
-    <%= button_link_to Spree.t(:new_author), new_object_url, { :remote => false, :icon => 'icon-plus', id: 'admin_new_authors_link' } %>
+    <%= button_link_to Spree.t(:new_author), new_object_url, { remote: false, icon: 'icon-plus', id: 'admin_new_authors_link' } %>
   </li>
 <% end %>
 
-<%= render :partial => 'spree/admin/shared/product_sub_menu' %>
+<%= render partial: 'spree/admin/shared/product_sub_menu' %>
 
 <% content_for :table_filter_title do %>
   <%= Spree.t(:search) %>
@@ -31,9 +31,9 @@
             <td class="align-center"><%= author.name %></td>
             <td class="align-center"><%= author_path(author) %></td>
             <td class="actions">
-              <%= link_to_edit author, :no_text => true, class: 'edit' %>
+              <%= link_to_edit author, no_text: true, class: 'edit' %>
               &nbsp;
-              <%= link_to_delete author, :no_text => true %>
+              <%= link_to_delete author, no_text: true %>
             </td>
           </tr>
         <% end %>
