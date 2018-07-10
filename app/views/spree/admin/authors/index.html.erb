@@ -19,8 +19,9 @@
     <table class="index" id="listing_authors">
       <thead>
         <tr data-hook="admin_authors_index_headers">
-          <th><%= Spree.t(:name) %></th>
-          <th><%= Spree.t(:permalink) %></th>
+          <th><%= sort_link @search,:name, Spree::Author.human_attribute_name(:name), {}, {title: 'admin_products_listing_name_title'} %></th>
+          <th><%= sort_link @search,:permalink, Spree::Author.human_attribute_name(:permalink), {}, {title: 'admin_products_listing_permalink_title'} %></th>
+          <th><%= sort_link @search,:created_at, Spree::Author.human_attribute_name(:created_at), { default_order: "desc" }, {title: 'admin_products_listing_created_at_title'} %></th>
           <th data-hook="admin_authors_index_header_actions" class="actions"></th>
         </tr>
       </thead>
@@ -29,6 +30,7 @@
           <tr id="<%= spree_dom_id author %>" data-hook="admin_authors_index_rows" class="<%= cycle('odd', 'even') %>">
             <td class="align-center"><%= author.name %></td>
             <td class="align-center"><%= author.permalink %></td>
+            <td class="align-center"><%= author.created_at.strftime("%F") %></td>
             <td class="actions">
               <%= link_to_edit author, no_text: true, class: 'edit' %>
               &nbsp;
