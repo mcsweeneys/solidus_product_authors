@@ -9,7 +9,7 @@
 <div class="fullWidthThinDivider">
 </div>
 
-<% if @products %>
+<% if @products.present? %>
   <div id="products">
     <%= render partial: 'spree/shared/products', locals: { products: @products, taxon: @taxon } %>
   </div>
