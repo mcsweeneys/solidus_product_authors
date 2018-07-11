@@ -28,9 +28,9 @@
       <tbody>
         <% @collection.each do |author| %>
           <tr id="<%= spree_dom_id author %>" data-hook="admin_authors_index_rows" class="<%= cycle('odd', 'even') %>">
-            <td class="align-center"><%= author.name %></td>
-            <td class="align-center"><%= author.permalink %></td>
-            <td class="align-center"><%= author.created_at.strftime("%F") %></td>
+            <td><%= author.name %></td>
+            <td><%= author.permalink %></td>
+            <td><%= author.created_at.strftime("%F") %></td>
             <td class="actions">
               <%= link_to_edit author, no_text: true, class: 'edit' %>
               &nbsp;
