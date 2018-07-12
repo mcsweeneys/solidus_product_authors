@@ -8,6 +8,6 @@ class Spree::Author < ActiveRecord::Base
 
   def to_param
     return permalink if permalink.present?
-    name.to_url
+    name.parameterize
   end
 end
