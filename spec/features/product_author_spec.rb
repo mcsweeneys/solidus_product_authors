@@ -7,8 +7,8 @@ describe 'ProductAuthors', js: true do
     @product1 = create(:product, name: 'RoR Mug', price: 10)
     @product2 = create(:product, name: 'Tote Bag', price: 10)
     @product3 = create(:product, name: 'T-Shirt', price: 10)
-    @author1 = create(:author, name: 'John Doe', permalink: 'johndoe')
-    @author2 = create(:author, name: 'Jane Smith', permalink: 'janesmith')
+    @author1 = create(:author, name: 'John Doe', permalink: 'john-doe')
+    @author2 = create(:author, name: 'Jane Smith', permalink: 'jane-smith')
 
     @product1.authors << @author1
     @product2.authors << @author2
@@ -50,5 +50,31 @@ describe 'ProductAuthors', js: true do
     visit spree.products_path
     click_link @product3.name
     expect(page).to have_content(/John Doe, Jane Smith/i)
+  end
+
+  context 'as_admin_user' do
+    stub_authorization!
+    before do
+      visit spree.admin_path
+    end
+
+    it 'should allow creation of new author' do
+      visit spree.admin_products_path
+      click_link 'Authors'
+      expect(page).to have_content 'Jane Smith'
+      expect(page).to have_content 'jane-smith'
+      expect(page).to have_content 'John Doe'
+      expect(page).to have_content 'john-doe'
+
+      click_link 'New Author'
+      expect(page).to have_content 'New Author'
+      fill_in 'Name', with: 'Boots Riley'
+      # Deliberately leave permalink blank to see if it auto-fills with the parameterized name
+      fill_in 'Bio', with: 'Boots Riley is an American rapper, producer, screenwriter and film director.'
+      click_button 'Create'
+
+      expect(page).to have_content 'Boots Riley'
+      expect(page).to have_content 'boots-riley'
+    end
   end
 end
