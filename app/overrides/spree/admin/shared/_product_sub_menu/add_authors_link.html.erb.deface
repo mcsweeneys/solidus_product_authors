@@ -1,4 +1,4 @@
-<!-- insert_bottom "[data-hook='admin_product_sub_tabs']" -->
+<!-- insert_bottom "[data-hook='admin_product_sub_tabs']" namespaced -->
 <!-- original 'f6bb375b1f9714e86a4893437eaf8da7848f6ec5' -->
 <% if can? :admin, Spree::Author %>
   <%= tab :authors, label: :authors %>

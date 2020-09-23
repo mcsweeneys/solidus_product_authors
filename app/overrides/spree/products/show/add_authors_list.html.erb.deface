@@ -1,4 +1,4 @@
-<!-- insert_after 'h1' -->
+<!-- insert_after 'h1' namespaced -->
 <!-- original 'addc940f1bc071ca01a3e22c133a9d3dd643a4db' -->
 <div id="authors-list" data-hook="authors_list">
   <%= @product.authors.map { |author| link_to(author.name, author, { class: "coloredLink" }) }.join(', ').html_safe if @product.authors.present? %>

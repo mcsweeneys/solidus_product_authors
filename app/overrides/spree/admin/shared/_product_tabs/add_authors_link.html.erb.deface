@@ -1,4 +1,4 @@
-<!-- insert_bottom "[data-hook='admin_product_tabs']" -->
+<!-- insert_bottom "[data-hook='admin_product_tabs']" namespaced -->
 <!-- original 'e185a81575538a5f5e2fbf3acbaea8374c43b746' -->
 <%= content_tag :li, class: ('active' if current == 'Authors') do %>
   <%= link_to I18n.t('spree.authors'), spree.admin_product_authors_url(@product) %>
