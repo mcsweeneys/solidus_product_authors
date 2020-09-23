@@ -1,3 +1,0 @@
-<%= content_tag :li, class: ('active' if current == 'Authors') do %>
-  <%= link_to t('spree.authors'), spree.admin_product_authors_url(@product) %>
-<% end if can?(:admin, Spree::Author) %>
