@@ -1,13 +1,13 @@
 <%= render partial: 'spree/admin/shared/product_tabs', locals: { current: 'Authors' } %>
 
-<% admin_breadcrumb(Spree.t(:authors)) %>
+<% admin_breadcrumb(I18n.t('spree.authors')) %>
 
 <div id="selected-authors" data-hook>
   <%= render partial: 'author_table', locals: { authors: @authors } %>
 </div>
 
 <%= form_tag '#' do %>
-  <%= label_tag nil, Spree.t(:search) %>:
+  <%= label_tag nil, I18n.t('spree.search') %>:
   <input id="searchtext" size="25">
 <% end %>
 

@@ -1,19 +1,19 @@
 <div data-hook="admin_author_form_fields">
     <div class="left eight columns alpha" data-hook="admin_product_form_left">
       <%= f.field_container :name do %>
-        <%= f.label :name, raw(Spree.t(:name) + content_tag(:span, ' *', class: 'required')) %>
+        <%= f.label :name, raw(I18n.t('spree.name') + content_tag(:span, ' *', class: 'required')) %>
         <%= f.text_field :name, class: 'fullwidth title' %>
         <%= f.error_message_on :name %>
       <% end %>
 
       <%= f.field_container :permalink do %>
-        <%= f.label :permalink, raw(Spree.t(:permalink) + content_tag(:span, ' *',  class: "required")) %>
+        <%= f.label :permalink, raw(I18n.t('spree.permalink') + content_tag(:span, ' *',  class: "required")) %>
         <%= f.text_field :permalink, class: 'fullwidth title' %>
         <%= f.error_message_on :permalink %>
       <% end %>
 
       <%= f.field_container :bio do %>
-        <%= f.label :bio, Spree.t(:bio) %>
+        <%= f.label :bio, I18n.t('spree.bio') %>
         <%= f.text_area :bio, {rows: "13", class: 'fullwidth'} %>
         <%= f.error_message_on :bio %>
       <% end %>

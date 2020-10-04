@@ -1,6 +1,6 @@
 <div data-hook="admin_inside_author_form">
   <%= f.field_container :name do %>
-    <%= f.label :name, Spree.t(:name) %> <span class="required">*</span><br />
+    <%= f.label :name, I18n.t('spree.name') %> <span class="required">*</span><br />
     <%= error_message_on :author, :name, class: 'fullwidth title'  %>
     <%= text_field :author, :name  %>
   <% end %>

@@ -39,13 +39,13 @@
           </tr>
         <% end %>
         <% if @authors.empty? %>
-          <tr data-hook="author_none"><td colspan="3"><%= Spree.t(:none) %></td></tr>
+          <tr data-hook="author_none"><td colspan="3"><%= I18n.t('spree.none') %></td></tr>
         <% end %>
       </tbody>
     </table>
 <% else %>
   <div class="no-objects-found">
-    <%= Spree.t(:no_results) %>
+    <%= I18n.t('spree.no_results') %>
   </div>
 <% end %>
 

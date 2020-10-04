@@ -1,7 +1,7 @@
 <table class="index">
   <thead>
     <tr data-hook="authors_header">
-      <th><%= Spree.t(:name) %></th>
+      <th><%= I18n.t('spree.name') %></th>
       <th data-hook="admin_product_authors_index_header_actions" class="actions"></th>
     </tr>
   </thead>
@@ -15,7 +15,7 @@
       </tr>
     <% end %>
     <% if authors.empty? %>
-     <tr data-hook="authors_none"><td>(<%= Spree.t(:none) %>)</td><td class="actions"></td></tr>
+     <tr data-hook="authors_none"><td>(<%= I18n.t('spree.none') %>)</td><td class="actions"></td></tr>
     <% end %>
   </tbody>
 </table>
