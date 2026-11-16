@@ -28,7 +28,7 @@ class Spree::Admin::ProductAuthorsController < Spree::Admin::BaseController
   def update
     @author = Spree::Author.find_by_permalink(params[:id])
 
-    if @author.update_attributes(params[:author])
+    if @author.update(params[:author])
       flash[:notice] = flash_message_for(@author, :successfully_updated)
     end
 
@@ -89,6 +89,6 @@ class Spree::Admin::ProductAuthorsController < Spree::Admin::BaseController
   private
 
   def load_product
-    Spree::Product.with_deleted.friendly.find(params[:product_id])
+    Spree::Product.with_discarded.friendly.find(params[:product_id])
   end
 end
